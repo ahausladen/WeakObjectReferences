@@ -40,6 +40,12 @@ begin
 end;
 ```
 
+Limitation
+----------
+It is not thread-safe to destroy an object in thread A and access the WeakReference.Target in thread B.
+For this to work the object would have to be reference counted (like in ARC) and a locking mechanism
+for the _ObjectRelease and IWeakReference.Target would be needed.
+
 
 How it works
 ------------

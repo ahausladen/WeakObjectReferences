@@ -361,7 +361,7 @@ begin
   Ref := Field^;
   if (Ref <> nil) {$IFDEF USE_MONITOR_FIELD}and (@Ref.AddRef = @WeakReference_AddRef){$ENDIF} then
   begin
-    // Call Dtors if they are registered
+    // Call registered Dtors for AddtionalData
     if TInternalWeakReferenceHelper.AdditionalDataDtors <> nil then
       for I := Length(TInternalWeakReferenceHelper.AdditionalDataDtors) - 1 downto 0 do
         TInternalWeakReferenceHelper.AdditionalDataDtors[I].Dtor(PByte(@Ref.Data.ExtraData) + TInternalWeakReferenceHelper.AdditionalDataDtors[I].Offset);
